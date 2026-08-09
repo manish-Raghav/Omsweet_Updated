@@ -8,7 +8,10 @@ async function connectDB() {
 
   mongoose.set("strictQuery", true);
 
-  const conn = await mongoose.connect(uri);
+  // const conn = await mongoose.connect(uri);
+   const conn=  await mongoose.connect(process.env.MONGO_URL, {
+               dbName: "OmSweetDatabase",
+             })
   console.log(`MongoDB connected: ${conn.connection.host}/${conn.connection.name}`);
   return conn;
 }
