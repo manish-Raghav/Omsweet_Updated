@@ -1,0 +1,40 @@
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.order-row-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.order-id {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+.order-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.order-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.order-item-chip {
+  background: var(--cream-2);
+  color: var(--ink-soft);
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
