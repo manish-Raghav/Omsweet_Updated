@@ -35,17 +35,13 @@ function AppShell() {
   const syncedUserId = useRef(null);
 
   useEffect(() => {
-    // Load the catalogue from the backend once on boot, and revalidate any
-    // cached login session against the server.
+
     dispatch(fetchProducts());
     if (getToken()) dispatch(refreshSession());
   }, [dispatch]);
 
   useEffect(() => {
-    // Whenever we land on a signed-in user (login, signup, or a cached
-    // session getting revalidated on boot), fold any guest cart into their
-    // account cart in MongoDB and treat the server as the source of truth
-    // from then on. On logout, fall back to the (now-empty) guest cart.
+
     if (currentUser && syncedUserId.current !== currentUser.id) {
       syncedUserId.current = currentUser.id;
       dispatch(syncCartWithServer());

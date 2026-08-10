@@ -20,5 +20,5 @@ const checkoutSlice = createSlice({
 export const { addressSaved, addressCleared } = checkoutSlice.actions;
 export default checkoutSlice.reducer;
 
-// ---- selectors ----
+
 export const selectCheckoutAddress = (state) => state.checkout.address;

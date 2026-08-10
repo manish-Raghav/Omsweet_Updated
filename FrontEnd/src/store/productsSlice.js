@@ -1,15 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "../services/api";
 
-// Full catalogue - fetched once on app boot, used for category-grouped
-// views, ProductDetail's "related items", and as a client-side fallback.
+
 export const fetchProducts = createAsyncThunk("products/fetchAll", async () => {
   const { products } = await api.getProducts();
   return products;
 });
 
-// Backend-driven search / filter / sort. Called whenever the person types
-// in a search box or changes a filter/sort control.
+
 export const fetchFilteredProducts = createAsyncThunk(
   "products/fetchFiltered",
   async (params = {}) => {
@@ -39,14 +37,14 @@ export const removeProduct = createAsyncThunk("products/remove", async (id) => {
 
 const initialState = {
   products: [],
-  status: "idle", // idle | loading | succeeded | failed
+  status: "idle", 
   error: null,
 
   filtered: [],
-  filteredStatus: "idle", // idle | loading | succeeded | failed
+  filteredStatus: "idle", 
   filteredError: null,
 
-  topSold: {}, // { [categoryKey]: Product[] }
+  topSold: {},
 };
 
 const productsSlice = createSlice({
@@ -104,13 +102,7 @@ export const selectFilteredStatus = (state) => state.products.filteredStatus;
 export const selectFilteredError = (state) => state.products.filteredError;
 export const selectTopSoldFor = (catKey) => (state) => state.products.topSold[catKey] || [];
 
-// Merges every product the app currently has data for - the general
-// catalogue, any backend-filtered search results, and the per-category
-// "top selling" caches - into one lookup. A product can be added to the
-// cart, or clicked into its detail page, from any of those three sources,
-// so lookups by id need to check all three or they'll wrongly appear
-// missing (empty cart rows, "product not found" redirects) whenever a
-// product hasn't made it into the general list yet.
+
 function allKnownProductsById(state) {
   const map = new Map();
   state.products.products.forEach((p) => map.set(p.id, p));

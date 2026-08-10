@@ -45,13 +45,13 @@ export default function CategoryPage() {
 
   const category = CATEGORIES.find((c) => c.key === catKey);
 
-  // Debounce the search box so we're not firing a request on every keystroke.
+
   useEffect(() => {
     const t = setTimeout(() => setSearch(searchInput.trim()), 350);
     return () => clearTimeout(t);
   }, [searchInput]);
 
-  // Reset local filters whenever the category itself changes.
+
   useEffect(() => {
     setPriceBucket("all");
     setSortBy("top-sold");

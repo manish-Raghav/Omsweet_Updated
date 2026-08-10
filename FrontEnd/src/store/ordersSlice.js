@@ -19,7 +19,7 @@ export const fetchAllOrders = createAsyncThunk("orders/fetchAll", async () => {
 const initialState = {
   mine: [],
   all: [],
-  status: "idle", // idle | loading | succeeded | failed
+  status: "idle", 
   error: null,
 };
 

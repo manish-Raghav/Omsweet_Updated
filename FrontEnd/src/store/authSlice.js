@@ -16,8 +16,7 @@ export const login = createAsyncThunk("auth/login", async (payload) => {
   return user;
 });
 
-// Called once on app boot if a token is cached, to make sure it's still
-// valid and to refresh the user's details from the server.
+
 export const refreshSession = createAsyncThunk("auth/refreshSession", async (_, { rejectWithValue }) => {
   try {
     const { user } = await api.me();
@@ -36,7 +35,7 @@ export const fetchAllUsers = createAsyncThunk("auth/fetchAllUsers", async () => 
 const initialState = {
   currentUser: getToken() ? storage.read(storage.KEYS.CURRENT_USER, null) : null,
   users: [],
-  status: "idle", // idle | loading | succeeded | failed
+  status: "idle", 
   error: null,
 };
 
@@ -94,7 +93,7 @@ const authSlice = createSlice({
 export const { sessionEnded } = authSlice.actions;
 export default authSlice.reducer;
 
-// ---- selectors ----
+
 export const selectCurrentUser = (state) => state.auth.currentUser;
 export const selectAuthStatus = (state) => state.auth.status;
 export const selectAuthError = (state) => state.auth.error;
