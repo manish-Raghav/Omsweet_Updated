@@ -16,7 +16,7 @@ export const fetchFilteredProducts = createAsyncThunk(
   }
 );
 
-// Backend-driven "top selling" showcase for a single category.
+
 export const fetchTopSold = createAsyncThunk(
   "products/fetchTopSold",
   async ({ cat, limit = 4 }) => {
@@ -91,7 +91,7 @@ const productsSlice = createSlice({
 
 export default productsSlice.reducer;
 
-// ---- selectors ----
+
 export const selectAllProducts = (state) => state.products.products;
 export const selectProductsStatus = (state) => state.products.status;
 export const selectProductsByCategory = (catKey) => (state) =>

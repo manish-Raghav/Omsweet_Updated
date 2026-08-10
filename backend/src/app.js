@@ -11,7 +11,7 @@ const { notFound, errorHandler } = require("./middlewares/error.middleware");
 
 const app = express();
 
-const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173")
+const allowedOrigins = (process.env.FRONTEND_URL || "https://omsweet-updated.vercel.app/")
   .split(",")
   .map((s) => s.trim());
 
