@@ -15,7 +15,8 @@ const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173")
   .split(",")
   .map((s) => s.trim());
 
-app.use(cors({ origin: allowedOrigins }));
+// app.use(cors({ origin: allowedOrigins }));
+app.use(cors());
 app.use(express.json({ limit: "3mb" })); // headroom for base64 image uploads from the admin form
 
 if (process.env.NODE_ENV !== "test") {
